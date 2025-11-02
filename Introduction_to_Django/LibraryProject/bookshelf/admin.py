@@ -8,7 +8,7 @@ admin.site.register(Book)
 # Uncomment and adjust if you want a list display, search, or filters
 #
 # @admin.register(Book)
-# class BookAdmin(admin.ModelAdmin):
-#     list_display = ("title", "author", "published_year")
-#     search_fields = ("title", "author")
-#     list_filter = ("published_year",)
+class BookAdmin(admin.ModelAdmin):
+     list_display = ("title", "author", "published_year")
+     search_fields = ("title", "author")
+     list_filter = ("published_year",)
