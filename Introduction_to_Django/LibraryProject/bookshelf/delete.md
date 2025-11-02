@@ -1,0 +1,1 @@
+info = Book.objects.filter(id=2).delete() 
