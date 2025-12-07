@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ug+d&fx$i6(xm@4o(+cal@w)jyf*d)ng1)xcc!q(k)*&x^d___
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["taggit"]
 
 
 # Application definition
