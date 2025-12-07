@@ -1,5 +1,5 @@
 """API views for Book CRUD using DRF generic views."""
-
+["from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated"]
 from rest_framework import generics, permissions
 ["ListView"]
 from .models import Book
