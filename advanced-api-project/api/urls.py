@@ -1,5 +1,5 @@
 from django.urls import path
-
+# ["books/create", "books/update", "books/delete"]
 from .views import (
     BookListCreateView,
     BookDetailView,
