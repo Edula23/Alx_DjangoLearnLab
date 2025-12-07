@@ -8,6 +8,7 @@ from blog.views import (
     PostCreateView,
     PostUpdateView,
     PostDeleteView,
+    PostByTagListView,
     user_profile_view,
 )
 
@@ -23,6 +24,7 @@ urlpatterns = [
     path("profile/", user_profile_view, name="profile"),
     path("post/<int:pk>/comments/new/", user_profile_view, name="profile"),
     path("comment/<int:pk>/delete/", user_profile_view, name="profile"),
-    path("comment/<int:pk>/update/")
+    path("comment/<int:pk>/update/"),
+    path("tags/<slug:tag_slug>/", PostByTagListView.as_view()),
 ]
 
