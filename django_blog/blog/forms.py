@@ -14,6 +14,15 @@ class PostForm(forms.ModelForm):
         }
 
 
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["content"]
+        widgets = {
+            "content": forms.Textarea(attrs={"class": "form-control", "rows": 3}),
+        }
+
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = get_user_model()

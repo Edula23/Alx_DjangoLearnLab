@@ -9,11 +9,53 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .forms import UserProfileForm
 from .forms import PostForm
 from .models import Post
+from django.shortcuts import get_object_or_404
+from .models import Post, Comment
+from .forms import CommentForm
+from django.shortcuts import get_object_or_404
+from .models import Post, Comment
+from .forms import CommentForm
 
 class Register(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "blog/register.html"
+class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Comment
+    form_class = CommentForm
+    template_name = "blog/comment_form.html"
+
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+    def get_success_url(self):
+        return self.object.post.get_absolute_url()
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+    template_name = "blog/comment_confirm_delete.html"
+
+    def test_func(self):
+        return self.get_object().author == self.request.user
+
+    def get_success_url(self):
+        return self.object.post.get_absolute_url()
+
+@login_required
+def add_comment(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = post
+            comment.author = request.user
+            comment.save()
+            return redirect("post_detail", pk=post.pk)
+    else:
+        form = CommentForm()
+    return render(request, "blog/comment_form.html", {"form": form, "post": post})
+
 
 
 
