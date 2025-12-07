@@ -1,4 +1,5 @@
 """API views for Book CRUD with filtering, search, and ordering."""
+["from django_filters import rest_framework"]
 
 from rest_framework import generics, permissions, filters
 
