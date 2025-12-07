@@ -21,5 +21,8 @@ urlpatterns = [
     path("login/", TemplateView.as_view(template_name="blog/login.html"), name="login"),
     path("register/", Register.as_view(), name="register"),
     path("profile/", user_profile_view, name="profile"),
+    path("post/<int:pk>/comments/new/", user_profile_view, name="profile"),
+    path("comment/<int:pk>/delete/", user_profile_view, name="profile"),
+    path("comment/<int:pk>/update/")
 ]
 
