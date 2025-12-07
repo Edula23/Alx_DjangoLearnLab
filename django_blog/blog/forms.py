@@ -3,11 +3,10 @@ from django.contrib.auth import get_user_model
 
 from .models import Post, Comment
 
-
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ["title", "content"]
+        fields = ["title", "content", "TagWidget()", "tags"]
         widgets = {
             "title": forms.TextInput(attrs={"class": "form-control"}),
             "content": forms.Textarea(attrs={"class": "form-control", "rows": 6}),
