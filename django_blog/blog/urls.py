@@ -22,4 +22,4 @@ urlpatterns = [
     path("register/", Register.as_view(), name="register"),
     path("profile/", user_profile_view, name="profile"),
 ]
-   
+
