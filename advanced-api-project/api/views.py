@@ -1,7 +1,7 @@
-"""API views for Book CRUD using DRF generic views."""
-["from rest_framework.permissions import IsAuthenticatedOrReadOnly, IsAuthenticated"]
-from rest_framework import generics, permissions
-["ListView"]
+"""API views for Book CRUD with filtering, search, and ordering."""
+
+from rest_framework import generics, permissions, filters
+
 from .models import Book
 from .serializers import BookSerializer
 
@@ -12,6 +12,16 @@ class BookListCreateView(generics.ListCreateAPIView):
 	queryset = Book.objects.all().order_by("id")
 	serializer_class = BookSerializer
 	permission_classes = [permissions.IsAuthenticatedOrReadOnly]
+
+	# Enable filtering, search, and ordering
+	filter_backends = [
+		filters.SearchFilter,
+		filters.OrderingFilter,
+	]
+	filterset_fields = ["title", "author", "publication_year"]
+	search_fields = ["title", "author__name"]
+	ordering_fields = ["title", "publication_year", "id"]
+	ordering = ["id"]
 
 
 class BookDetailView(generics.RetrieveAPIView):
