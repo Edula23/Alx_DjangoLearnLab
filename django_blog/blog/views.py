@@ -20,7 +20,7 @@ class Register(CreateView):
     form_class = UserCreationForm
     success_url = reverse_lazy("login")
     template_name = "blog/register.html"
-class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class CommentCreateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Comment
     form_class = CommentForm
     template_name = "blog/comment_form.html"
