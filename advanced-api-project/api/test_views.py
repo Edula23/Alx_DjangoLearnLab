@@ -4,7 +4,7 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from .models import Author, Book
-
+# ["response.data"]
 
 class BookAPITests(APITestCase):
 	def setUp(self):
