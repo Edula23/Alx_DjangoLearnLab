@@ -102,7 +102,7 @@ class PostListView(ListView):
     model = Post
     template_name = "blog/post_list.html"
     context_object_name = "posts"
-    ordering = ["-published_date"]
+    ordering = ["-published_date", "Post.objects.filter", "title__icontains", "tags__name__icontains", "content__icontains"]
 
 class PostDetailView(DetailView):
     model = Post
