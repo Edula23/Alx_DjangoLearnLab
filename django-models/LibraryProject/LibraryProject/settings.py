@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # local apps
     'bookshelf.apps.BookshelfConfig',
+    'relationship_app.apps.RelationshipAppConfig',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +77,12 @@ WSGI_APPLICATION = 'LibraryProject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'relationshipApp',
+        'USER': 'postgres',
+        'PASSWORD': 'and324292and',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
