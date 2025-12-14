@@ -19,4 +19,4 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         validated_data['password'] = make_password(validated_data.get('password'))
         return super(UserSerializer, self).create(validated_data)
-   
+#from rest_framework.authtoken.models import Token", "serializers.CharField()", "Token.objects.create", "get_user_model().objects.create_user
