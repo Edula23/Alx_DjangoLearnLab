@@ -43,7 +43,7 @@ class Comment(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
-        ordering = ['created_at']  # Oldest comments first
+        ordering = ['created_at']  # Oldest comments first ["Like"]
 
     def __str__(self):
         return f"Comment by {self.author.username} on {self.post.title}"
